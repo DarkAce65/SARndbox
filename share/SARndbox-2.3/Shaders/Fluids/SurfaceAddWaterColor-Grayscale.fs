@@ -165,7 +165,7 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 	if(waterLevel>0.0)
 		{
 		/* Calculate the water color: */
-		float turbulence=max(snoise(vec3(fragCoord*0.05,waterAnimationTime*0.25)),0.0); // Simple noise function
+		float turbulence=max(snoise(vec3(fragCoord*0.1,waterAnimationTime*0.25)),0.0); // Simple noise function
 
 		vec4 waterColor=vec4(1.0-turbulence,1.0-turbulence,1.0-turbulence,1.0); // Grayscale
 
