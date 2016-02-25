@@ -7,7 +7,7 @@ if [ ! -e $PIPE_PATH ] # Ensure that an empty pipe will be available
 	then
 		echo "Control.fifo not found."
 		echo "Run 'mkfifo Control.fifo' and pass it to SARndbox via -cp flag"
-		echo "./SARndbox <usual parameters> -cp "$DIR"/Control.fifo"
+		echo "./SARndbox <usual parameters> -cp "$PIPE_PATH
 		exit 1
 fi
 
