@@ -3,7 +3,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # Get shell directory
 DEST_SHADER=$DIR"/share/SARndbox-1.6/Shaders/SurfaceAddWaterColor.fs" # Destination shader path
 
 PIPE_PATH=$DIR"/Control.fifo";
-if [ ! -e $PIPE_PATH ] # Ensure that an empty pipe will be available
+if [ ! -e $PIPE_PATH ] # Ensure that a control pipe is available
 	then
 		echo "Control.fifo not found."
 		echo "Run 'mkfifo Control.fifo' and pass it to SARndbox via -cp flag"
