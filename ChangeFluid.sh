@@ -23,7 +23,7 @@ case $1 in
 		echo "waterSpeed 1.0" > $PIPE_PATH
 		echo "waterAttenuation 0.99" > $PIPE_PATH
 		;;
-	toxic\ waste | toxicwaste | tw)
+	toxicwaste | tw)
 		SOURCE_SHADER=$DIR"/share/SARndbox-1.6/Shaders/Fluids/SurfaceAddWaterColor-Water.fs"
 		echo "waterSpeed 1.5" > $PIPE_PATH
 		echo "waterAttenuation 0.3" > $PIPE_PATH
