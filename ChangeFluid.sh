@@ -15,22 +15,18 @@ shopt -s nocasematch # Case insensitive patterns
 case $1 in
 	water | w)
 		SOURCE_SHADER=$DIR"/share/SARndbox-2.3/Shaders/Fluids/SurfaceAddWaterColor-Water.fs"
-		echo "waterSpeed 4.0" > $PIPE_PATH
 		echo "waterAttenuation 0.0078125" > $PIPE_PATH # 1/128
 		;;
 	lava | l)
 		SOURCE_SHADER=$DIR"/share/SARndbox-2.3/Shaders/Fluids/SurfaceAddWaterColor-Lava.fs"
-		echo "waterSpeed 1.0" > $PIPE_PATH
 		echo "waterAttenuation 0.99" > $PIPE_PATH
 		;;
 	toxicwaste | tw)
 		SOURCE_SHADER=$DIR"/share/SARndbox-2.3/Shaders/Fluids/SurfaceAddWaterColor-ToxicWaste.fs"
-		echo "waterSpeed 1.5" > $PIPE_PATH
 		echo "waterAttenuation 0.3" > $PIPE_PATH
 		;;
 	grayscale | g)
 		SOURCE_SHADER=$DIR"/share/SARndbox-2.3/Shaders/Fluids/SurfaceAddWaterColor-Grayscale.fs"
-		echo "waterSpeed 2.0" > $PIPE_PATH
 		echo "waterAttenuation 0.05" > $PIPE_PATH
 		;;
 	*)
