@@ -24,12 +24,12 @@ case $1 in
 		echo "waterAttenuation 0.99" > $PIPE_PATH
 		;;
 	toxicwaste | tw)
-		SOURCE_SHADER=$DIR"/share/SARndbox-1.6/Shaders/Fluids/SurfaceAddWaterColor-Water.fs"
+		SOURCE_SHADER=$DIR"/share/SARndbox-1.6/Shaders/Fluids/SurfaceAddWaterColor-ToxicWaste.fs"
 		echo "waterSpeed 1.5" > $PIPE_PATH
 		echo "waterAttenuation 0.3" > $PIPE_PATH
 		;;
 	grayscale | g)
-		SOURCE_SHADER=$DIR"/share/SARndbox-1.6/Shaders/Fluids/SurfaceAddWaterColor-Water.fs"
+		SOURCE_SHADER=$DIR"/share/SARndbox-1.6/Shaders/Fluids/SurfaceAddWaterColor-Grayscale.fs"
 		echo "waterSpeed 2.0" > $PIPE_PATH
 		echo "waterAttenuation 0.05" > $PIPE_PATH
 		;;
