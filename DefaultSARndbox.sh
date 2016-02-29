@@ -2,7 +2,7 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" # Get shell directory
 
 # Ensure that an empty pipe will be available
-$PIPE_PATH=$DIR"/Control.fifo"
+PIPE_PATH=$DIR"/Control.fifo"
 if [ -e $PIPE_PATH ]
 	then
 		rm $PIPE_PATH
