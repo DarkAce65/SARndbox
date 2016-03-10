@@ -172,7 +172,7 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 		                       0.25));
 		float colorW=pow(dot(wn,normalize(vec3(0.075,0.075,1.0))),100.0)*1.0-0.0;
 
-		vec4 waterColor=vec4(colorW*0.9,colorW*0.8,colorW*0.9,1.0); // Oil
+		vec4 waterColor=vec4(colorW*0.9,colorW*0.85,colorW*0.9,1.0); // Oil
 
 		/* Mix the water color with the base surface color based on the water level: */
 		baseColor=mix(baseColor,waterColor,min(waterLevel*waterOpacity*2.0,1.0));
