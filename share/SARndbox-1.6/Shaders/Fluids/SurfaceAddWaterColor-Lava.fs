@@ -188,7 +188,7 @@ void addWaterColorAdvected(inout vec4 baseColor)
 	if(waterLevelTex.b>=1.0/2048.0)
 		{
 		/* Calculate the water color: */
-		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simple noise function
+		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simplex noise function
 		float colorW=max(turb(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Turbulence noise
 
 		//vec3 noisePos=vec3(waterLevelTex.rg*0.045/waterLevelTex.b,waterAnimationTime*0.25);
