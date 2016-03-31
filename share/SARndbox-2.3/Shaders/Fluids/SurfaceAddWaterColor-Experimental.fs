@@ -166,7 +166,7 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 		{
 		/* Calculate the water color: */
 		vec3 color=vec3(0.0);
-		color.r=0.95-max(snoise(vec3(fragCoord,waterAnimationTime*0.125)),0.0); // Simple noise function
+		color.r=0.95-max(snoise(vec3(fragCoord,waterAnimationTime*0.125)),0.0); // Simplex noise function
 		color.g=0.95-max(snoise(vec3(fragCoord*0.5,waterAnimationTime*0.25)),0.0);
 		color.b=0.9-max(snoise(vec3(fragCoord*0.25,waterAnimationTime*0.5)),0.0);
 
@@ -191,7 +191,7 @@ void addWaterColorAdvected(inout vec4 baseColor)
 	if(waterLevelTex.b>=1.0/2048.0)
 		{
 		/* Calculate the water color: */
-		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simple noise function
+		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simplex noise function
 		float colorW=max(turb(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Turbulence noise
 
 		//vec3 noisePos=vec3(waterLevelTex.rg*0.045/waterLevelTex.b,waterAnimationTime*0.25);
