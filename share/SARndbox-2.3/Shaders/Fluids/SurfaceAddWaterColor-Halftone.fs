@@ -173,12 +173,12 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 		float colorW=pow(dot(wn,normalize(vec3(0.075,0.075,1.0))),100.0)*1.0-0.0;
 
 		mat2 rotationMatrix=mat2(0.707,-0.707,0.707,0.707);
-		vec2 nearest=2.0*fract(fragCoord*0.05*rotationMatrix)-1.0;
+		vec2 nearest=2.0*fract(fragCoord*0.25*rotationMatrix)-1.0;
 
 		float dotRadius=1.0-clamp(colorW,0.0,1.0);
 		float mixValue=step(dotRadius,length(nearest));
 
-		vec4 waterColor=vec4(mix(vec3(0.0),vec3(1.0),mixValue),1.0); // Halftone
+		vec4 waterColor=vec4(mix(vec3(0.0),vec3(0.0,0.0,0.9),mixValue),1.0); // Halftone
 
 		/* Mix the water color with the base surface color based on the water level: */
 		baseColor=mix(baseColor,waterColor,min(waterLevel*waterOpacity,1.0));

@@ -14,4 +14,4 @@ SHADER_PATH=$DIR"/share/SARndbox-2.3/Shaders"
 cp $SHADER_PATH"/Fluids/SurfaceAddWaterColor-Water.fs" $SHADER_PATH"/SurfaceAddWaterColor.fs"
 
 # Keep a terminal open with SARndbox running
-xfce4-terminal --hold --working-directory=$DIR --command="./bin/SARndbox -fpv -ws 4.0 30 -rs 1.0 -cp "$DIR"/Control.fifo"
+xfce4-terminal --hold --working-directory=$DIR --command="./bin/SARndbox -fpv -ws 4.0 30 -rs 1.0 -cp "$DIR"/Control.fifo -loadInputGraph "$DIR"/DefaultKeys.inputgraph"
