@@ -166,7 +166,7 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 		{
 		/* Calculate the water color: */
 		vec3 color=vec3(0.0);
-		color.r=0.95-max(snoise(vec3(fragCoord,waterAnimationTime*0.125)),0.0); // Simplex noise function
+		color.r=0.95-max(snoise(vec3(fragCoord*0.05,waterAnimationTime*0.125)),0.0); // Simplex noise function
 		color.g=0.95-max(snoise(vec3(fragCoord*0.5,waterAnimationTime*0.25)),0.0);
 		color.b=0.9-max(snoise(vec3(fragCoord*0.25,waterAnimationTime*0.5)),0.0);
 

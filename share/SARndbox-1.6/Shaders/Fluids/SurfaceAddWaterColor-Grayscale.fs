@@ -165,20 +165,9 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 	if(waterLevel>0.0)
 		{
 		/* Calculate the water color: */
-		vec3 wn=normalize(vec3(texture2DRect(quantitySampler,vec2(waterLevelTexCoord.x-1.0,waterLevelTexCoord.y)).r-
-		                       texture2DRect(quantitySampler,vec2(waterLevelTexCoord.x+1.0,waterLevelTexCoord.y)).r,
-		                       texture2DRect(quantitySampler,vec2(waterLevelTexCoord.x,waterLevelTexCoord.y-1.0)).r-
-		                       texture2DRect(quantitySampler,vec2(waterLevelTexCoord.x,waterLevelTexCoord.y+1.0)).r,
-		                       0.25));
-		float colorW=pow(dot(wn,normalize(vec3(0.075,0.075,1.0))),100.0)*1.0-0.0;
+		float turbulence=max(snoise(vec3(fragCoord*0.1,waterAnimationTime*0.25)),0.0); // Simple noise function
 
-		mat2 rotationMatrix=mat2(0.707,-0.707,0.707,0.707);
-		vec2 nearest=2.0*fract(fragCoord*0.25*rotationMatrix)-1.0;
-
-		float dotRadius=1.0-clamp(colorW,0.0,1.0);
-		float mixValue=step(dotRadius,length(nearest));
-
-		vec4 waterColor=vec4(mix(vec3(0.0),vec3(0.0,0.0,0.9),mixValue),1.0); // Halftone
+		vec4 waterColor=vec4(1.0-turbulence,1.0-turbulence,1.0-turbulence,1.0); // Grayscale
 
 		/* Mix the water color with the base surface color based on the water level: */
 		baseColor=mix(baseColor,waterColor,min(waterLevel*waterOpacity,1.0));
@@ -199,7 +188,7 @@ void addWaterColorAdvected(inout vec4 baseColor)
 	if(waterLevelTex.b>=1.0/2048.0)
 		{
 		/* Calculate the water color: */
-		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simplex noise function
+		// float colorW=max(snoise(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Simple noise function
 		float colorW=max(turb(vec3(waterLevelTex.rg*0.05/waterLevelTex.b,waterAnimationTime*0.25)),0.0); // Turbulence noise
 
 		//vec3 noisePos=vec3(waterLevelTex.rg*0.045/waterLevelTex.b,waterAnimationTime*0.25);
