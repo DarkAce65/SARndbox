@@ -1,7 +1,7 @@
 /***********************************************************************
 SurfaceAddWaterColor - Shader fragment to modify the base color of a
 surface if the current fragment is under water.
-Copyright (c) 2012 Oliver Kreylos
+Copyright (c) 2012-2015 Oliver Kreylos
 
 This file is part of the Augmented Reality Sandbox (SARndbox).
 
@@ -142,10 +142,11 @@ Water shading function:
 
 uniform sampler2DRect bathymetrySampler;
 uniform sampler2DRect quantitySampler;
+uniform vec2 waterCellSize;
 uniform float waterOpacity;
 uniform float waterAnimationTime;
 
-varying vec2 waterLevelTexCoord; // Texture coordinate for water level texture
+varying vec2 waterTexCoord; // Texture coordinate for water level texture
 
 /***********************************************************************
 Water shading function using a one-component water level texture and
@@ -155,11 +156,11 @@ fixed texture coordinates:
 void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 	{
 	/* Calculate the water column height above this fragment: */
-	float b=(texture2DRect(bathymetrySampler,vec2(waterLevelTexCoord.x-1.0,waterLevelTexCoord.y-1.0)).r+
-	         texture2DRect(bathymetrySampler,vec2(waterLevelTexCoord.x,waterLevelTexCoord.y-1.0)).r+
-	         texture2DRect(bathymetrySampler,vec2(waterLevelTexCoord.x-1.0,waterLevelTexCoord.y)).r+
-	         texture2DRect(bathymetrySampler,waterLevelTexCoord.xy).r)*0.25;
-	float waterLevel=texture2DRect(quantitySampler,waterLevelTexCoord).r-b;
+	float b=(texture2DRect(bathymetrySampler,vec2(waterTexCoord.x-1.0,waterTexCoord.y-1.0)).r+
+	         texture2DRect(bathymetrySampler,vec2(waterTexCoord.x,waterTexCoord.y-1.0)).r+
+	         texture2DRect(bathymetrySampler,vec2(waterTexCoord.x-1.0,waterTexCoord.y)).r+
+	         texture2DRect(bathymetrySampler,waterTexCoord.xy).r)*0.25;
+	float waterLevel=texture2DRect(quantitySampler,waterTexCoord).r-b;
 
 	/* Check if the surface is under water: */
 	if(waterLevel>0.0)
@@ -184,7 +185,7 @@ void addWaterColorAdvected(inout vec4 baseColor)
 	{
 	#if 0
 	/* Check if the surface is under water: */
-	vec3 waterLevelTex=texture2DRect(waterLevelSampler,waterLevelTexCoord).rgb;
+	vec3 waterLevelTex=texture2DRect(waterLevelSampler,waterTexCoord).rgb;
 	if(waterLevelTex.b>=1.0/2048.0)
 		{
 		/* Calculate the water color: */
