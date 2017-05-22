@@ -1,15 +1,13 @@
 section InputGraph
 	section Tool0
-		toolClass VruiApplicationEventToolClass0
-		bindings ((Mouse, p))
+		toolClass RayMenuTool
+		bindings ((Mouse, Mouse3))
+		drawRay true
+		rayColor (1, 0, 0)
+		rayWidth 3
 	endsection
 	
 	section Tool1
-		toolClass RayScreenMenuTool
-		bindings ((Mouse, Mouse3))
-	endsection
-	
-	section Tool2
 		toolClass FPSNavigationTool
 		bindings ((Mouse, q, a, d, s, w, Space))
 		activationToggle true
@@ -19,6 +17,7 @@ section InputGraph
 		jumpVelocity 157.480314960629926
 		probeSize 12
 		maxClimb 12
+		azimuthStep 0
 		fixAzimuth false
 		levelOnExit false
 		drawHud true
@@ -28,27 +27,35 @@ section InputGraph
 		hudFontSize 0.112500004
 	endsection
 	
-	section Tool3
+	section Tool2
 		toolClass ScrollTool
 		bindings ((Mouse, MouseWheel))
+		drawRay true
+		rayColor (1, 0, 0)
+		rayWidth 3
+	endsection
+	
+	section Tool3
+		toolClass WidgetTool
+		bindings ((Mouse, Mouse1))
+		drawRay true
+		rayColor (1, 0, 0)
+		rayWidth 3
 	endsection
 	
 	section Tool4
-		toolClass WidgetTool
-		bindings ((Mouse, Mouse1))
+		toolClass GlobalWaterTool
+		bindings ((Mouse, f), (Tool1, Button1))
 	endsection
 	
 	section Tool5
-		toolClass WaterTool
-		bindings ((Mouse, f), (Tool2, Button1))
-	endsection
-	
-	section Tool6
 		toolClass MouseNavigationTool
-		bindings ((Tool4, Button0), (Mouse, z, LeftShift), (Tool3, Valuator0))
+		bindings ((Tool3, Button0), (Mouse, z, LeftShift), (Tool2, Valuator0))
 		rotatePlaneOffset 2.5
 		rotateFactor 2.5
 		invertDolly false
+		dollyCenter true
+		scaleCenter true
 		dollyingDirection (-0, -0, -1)
 		scalingDirection (-0, -0, -1)
 		dollyFactor 1
@@ -57,6 +64,5 @@ section InputGraph
 		wheelScaleFactor 0.5
 		spinThreshold 0.0750000029802322388
 		showScreenCenter true
-		interactWithWidgets false
 	endsection
 endsection
