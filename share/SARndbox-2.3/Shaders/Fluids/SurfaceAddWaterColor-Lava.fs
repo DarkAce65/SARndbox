@@ -171,7 +171,8 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 		vec4 waterColor=vec4(1.3-colorW,1.3-colorW*2.0,0.0,1.0); // Lava
 
 		/* Mix the water color with the base surface color based on the water level: */
-		baseColor=mix(baseColor,waterColor,min(waterLevel*waterOpacity,1.0));
+		waterColor*=min(waterLevel*waterOpacity*smoothstep(0.2,1.5,waterLevel),1.0);
+		baseColor=mix(baseColor,waterColor,min(smoothstep(0.2,0.25,waterLevel),1.0));
 		}
 	}
 
