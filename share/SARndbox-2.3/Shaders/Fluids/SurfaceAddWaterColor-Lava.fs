@@ -166,7 +166,7 @@ void addWaterColor(in vec2 fragCoord,inout vec4 baseColor)
 	if(waterLevel>0.0)
 		{
 		/* Calculate the water color: */
-		float colorW=max(turb(vec3(fragCoord*0.05,waterAnimationTime*0.25)),0.0); // Turbulence noise
+		float colorW=max(turb(vec3(fragCoord*0.02,waterAnimationTime*0.25)),0.0); // Turbulence noise
 
     float edge=pow(min(waterLevel*waterOpacity*smoothstep(0.2,1.5,waterLevel),1.0),0.3);
 		vec4 waterColor=vec4(mix(vec3(0.16,0.27,0.25),vec3(1.3-colorW,1.3-colorW*2.0,0.0),edge),1.0); // Lava
