@@ -65,4 +65,12 @@ section InputGraph
 		spinThreshold 0.0750000029802322388
 		showScreenCenter true
 	endsection
+
+	section Tool6
+		toolClass DEMTool
+		bindings((Mouse, m))
+		demFileName /home/sandbox/src/SARndbox
+		demVerticalScale 1
+		demVerticalShift 69.5 # Positive values make it blue-er, negative values red-er
+	endsection
 endsection
